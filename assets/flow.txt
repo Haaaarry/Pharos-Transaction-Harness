@@ -1,0 +1,8 @@
+Agent transaction request
+        |
+        v
+Transaction Harness Skill
+        |
+        +--> deny   -> stop
+        +--> review -> ask for approval
+        +--> allow  -> optional reference executor -> Pharos RPC

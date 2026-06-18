@@ -1,0 +1,17 @@
+{
+  "name": "pharos-testnet-basic-agent-policy",
+  "allowedChainIds": [688688],
+  "allowedAddresses": [
+    "0x1111111111111111111111111111111111111111",
+    "0x2222222222222222222222222222222222222222"
+  ],
+  "deniedAddresses": [
+    "0x9999999999999999999999999999999999999999"
+  ],
+  "maxValueWeiPerTx": "100000000000000000",
+  "remainingDailyValueWei": "500000000000000000",
+  "allowNativeTransfers": true,
+  "allowedSelectors": ["0xa9059cbb"],
+  "reviewSelectors": ["0x095ea7b3"],
+  "unknownCalldata": "review"
+}

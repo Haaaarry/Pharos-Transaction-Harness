@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/pharos-transaction-harness/verdict.schema.json",
+  "title": "Pharos Transaction Harness Verdict",
+  "type": "object",
+  "required": ["verdict", "riskLevel", "reasons", "matchedRules", "requiredActions", "audit"],
+  "additionalProperties": false,
+  "properties": {
+    "verdict": {
+      "type": "string",
+      "enum": ["allow", "deny", "review"]
+    },
+    "riskLevel": {
+      "type": "string",
+      "enum": ["low", "medium", "high"]
+    },
+    "reasons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "matchedRules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["rule", "effect"],
+        "additionalProperties": false,
+        "properties": {
+          "rule": {
+            "type": "string"
+          },
+          "effect": {
+            "type": "string",
+            "enum": ["allow", "deny", "review"]
+          },
+          "detail": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "requiredActions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "audit": {
+      "type": "object",
+      "required": ["id", "createdAt", "policyName"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "policyName": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

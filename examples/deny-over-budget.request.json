@@ -1,0 +1,8 @@
+{
+  "chainId": 688688,
+  "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "to": "0x1111111111111111111111111111111111111111",
+  "valueWei": "200000000000000000",
+  "data": "0x",
+  "intent": "Attempt a payment that exceeds the per-transaction budget."
+}

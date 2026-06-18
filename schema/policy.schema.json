@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/pharos-transaction-harness/policy.schema.json",
+  "title": "Pharos Transaction Harness Policy",
+  "type": "object",
+  "required": ["name", "allowedChainIds", "unknownCalldata"],
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "allowedChainIds": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "allowedAddresses": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^0x[a-fA-F0-9]{40}$"
+      },
+      "uniqueItems": true
+    },
+    "deniedAddresses": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^0x[a-fA-F0-9]{40}$"
+      },
+      "uniqueItems": true
+    },
+    "maxValueWeiPerTx": {
+      "type": "string",
+      "pattern": "^[0-9]+$"
+    },
+    "remainingDailyValueWei": {
+      "type": "string",
+      "pattern": "^[0-9]+$"
+    },
+    "allowNativeTransfers": {
+      "type": "boolean"
+    },
+    "allowedSelectors": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^0x[a-fA-F0-9]{8}$"
+      },
+      "uniqueItems": true
+    },
+    "reviewSelectors": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^0x[a-fA-F0-9]{8}$"
+      },
+      "uniqueItems": true
+    },
+    "unknownCalldata": {
+      "type": "string",
+      "enum": ["allow", "deny", "review"]
+    }
+  }
+}

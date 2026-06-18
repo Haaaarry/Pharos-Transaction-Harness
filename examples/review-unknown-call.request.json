@@ -1,0 +1,8 @@
+{
+  "chainId": 688688,
+  "from": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "to": "0x2222222222222222222222222222222222222222",
+  "valueWei": "0",
+  "data": "0x123456780000000000000000000000000000000000000000000000000000000000000001",
+  "intent": "Call an unclassified contract method for the active mission."
+}
