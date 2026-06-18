@@ -1,5 +1,5 @@
 import { readFile } from "node:fs/promises";
-import { decideAgentAction, evaluateTransaction, primaryReasonFor } from "../src/index.js";
+import { decideAgentAction, evaluateTransaction, formatScenarioBlock } from "../src/index.js";
 import type { HarnessPolicy, TransactionRequest } from "../src/index.js";
 
 interface Scenario {
@@ -31,26 +31,22 @@ async function main(): Promise<void> {
 
   console.log("Pharos Transaction Harness Agent Demo");
   console.log("Mode: dry-run agent simulation, no private key, no broadcast");
+  console.log("Flow: Agent proposes tx -> Harness verdict -> Agent action -> Executor gate");
   console.log("");
 
-  for (const scenario of scenarios) {
+  for (const [index, scenario] of scenarios.entries()) {
     const request = await readJson<TransactionRequest>(scenario.requestPath);
     const verdict = evaluateTransaction(request, policy);
     const action = decideAgentAction(verdict);
 
-    console.log(`[Agent] Proposed transaction: ${scenario.name}`);
-    console.log(`[Agent] Intent: ${request.intent ?? "No intent provided"}`);
-    console.log(`[Harness] Verdict: ${verdict.verdict}`);
-    console.log(`[Harness] Risk: ${verdict.riskLevel}`);
-    console.log(`[Harness] Primary reason: ${primaryReasonFor(verdict)}`);
-    console.log(`[Agent] Action: ${action}`);
-
-    if (action === "proceed_to_executor") {
-      console.log("[Executor] Dry-run: transaction would be sent to the gated executor.");
-    } else {
-      console.log("[Executor] Not called: harness verdict prevents broadcast.");
-    }
-
+    console.log(formatScenarioBlock({
+      index: index + 1,
+      total: scenarios.length,
+      scenarioName: scenario.name,
+      request,
+      verdict,
+      action
+    }));
     console.log("");
   }
 }
