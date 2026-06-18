@@ -90,7 +90,7 @@ Agent proposes transaction -> Harness returns verdict -> Agent proceeds, request
 
 ## Demo Screenshot
 
-![Agent demo showing allow, review, and deny transaction decisions](assets/screenshots/agent-demo.png)
+![Agent demo showing allow, review, and deny transaction decisions](assets/screenshots/agent-demo-v2.png)
 
 ## Demo Executor
 
